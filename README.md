@@ -1,36 +1,50 @@
-# 📸 Meme Directory with Pokémon API Integration
-
-A fun, interactive meme management app built with **Next.js**, featuring Pokémon data from the [PokéAPI](https://pokeapi.co/).  
-Users can view, edit, and like memes, with images and stats inspired by Pokémon characters.
-
-Створити React-додаток що відповідає вимогам (див. нижче) використовуючи бібліотеку HeroUI, https://www.heroui.com
-Зареєструвати безкоштовний обліковий запис Railway, https://railway.com
-Задеплоїти цей додаток на Railway, https://docs.railway.com/guides/react
-Надати доступ до додатку по URL
-
+# 📸 Responsive UI Project – Next.js 15.3 Test Task
+A responsive, animated UI built with **Next.js 15.3**, **Tailwind CSS v4**, **React**, **Redux**, and **Gsap**, 
+implementing smooth transitions, dropdowns, authentication, and more.
 ---
 
-## 🚀 Features
+## ✨ Features
 
-- 🧠 Global state with `useContext` (Pokémon data accessible across pages)
-- ⚙️ Integration with [PokéAPI](https://pokeapi.co/)
-- 💾 Meme persistence via `localStorage`
-- 🖼️ Image fallback logic when URL fails
-- ✍️ Editable meme modals (name, image, likes)
-- 📱 Fully responsive UI with Tailwind CSS
+### ✅ General
+
+- Fully **responsive design**, mobile-first
+- **Cross-browser compatibility** (Chrome, Firefox, Safari, Edge)
+- Smooth animations for all transitions and UI interactions
+
+### ✅ Navigation & UI
+
+- Animated **dropdown menus** for language and currency
+- Main menu with **animated page navigation**
+- Smooth **page transitions** using Framer Motion
+
+### ✅ Authentication
+
+- Animated **login / registration forms** with toggle switch
+- **Success indicators** upon successful authentication
+- Return to main menu with **smooth exit animation**
+
+### ✅ Orders
+
+- Orders **list view** with loading/error handling
+- Animated transition to **order detail view**
+- Smooth return to order list on close
 
 ---
 
 ## 📁 Project Structure
 ```bash
 .
+├── constants/ # All constants 
 ├── components/ # UI components 
-├── context/ # Global context (PokemonContext) 
-├── lib/ # API fetch logic 
+├── hook/ # Hook for private and public routers
+├── store/ # Redux
+├── context/ # Global context  
+├── api/ # API fetch logic 
 ├── pages/ # Next.js pages 
-├── public/ # Static assets (fallback.jpg) 
+├── public/ # Static assets  
 ├── styles/ # Tailwind configs 
 ├── next.config.js # Image domains setup 
+├── Dockerfile # Docker 
 └── README.md
 ```
 
@@ -45,16 +59,30 @@ npm install
 # or
 yarn install
 ```
-### 2. Start the dev server
+### 2. Build project
 ```bash
-npm run dev
+npm next build
 # or
-yarn dev
+yarn next build
 ```
-### 3. Open your browser
+### 3. Start the dev server
+```bash
+npm next start
+# or
+yarn next start
+```
+
+### 4. Open your browser
 ```bash
 http://localhost:3000
 ```
+
+### 4. To run using Docker:
+```bash
+docker build -t nextjs-ui .
+docker run -p 3000:3000 nextjs-ui
+```
+### Also use scripts for developing environment 
 
 ### 🛠 Tech Stack
 
@@ -64,9 +92,13 @@ http://localhost:3000
 
  - Tailwind CSS
 
- - Headless UI
+ - Redux
 
- - PokéAPI
+ - Gsap
+
+ - Docker
+
+ - Vercel
 
 ###  License
 

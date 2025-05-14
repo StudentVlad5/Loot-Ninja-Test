@@ -1,9 +1,9 @@
 
 
   export const currencies: ItemsOption<'usd' | 'eur' | 'uah'>[] = [
-    { code: 'usd', label: 'USD', value: "$" },
-    { code: 'eur', label: 'EUR', value: "€" },
-    { code: 'uah', label: 'UAH', value: "₴" },
+    { code: 'usd', label: 'USD', value: "$", fix: "1" },
+    { code: 'eur', label: 'EUR', value: "€", fix: "1.2"  },
+    { code: 'uah', label: 'UAH', value: "₴", fix: "45"  },
   ];
 
   export const lunguages: ItemsOption<'uk' | 'ua' | 'eu'>[] = [
@@ -17,6 +17,7 @@
     label: string;
     value?: string;
     img?: string
+    fix?: string
   }
   
 export  interface ItemsSelectorProps<T extends string = string> {
@@ -60,5 +61,35 @@ export const itemsForLogin = [
   {url: '/images/telegram.svg',
     alt: "Telegram",
   },
+]
 
+export const transactionData = [
+  {id: "12345",
+  date: "12.05.2005",
+  status: "Success",
+  game_name: "Gregory",
+  game_id: "12345678",
+  balance: "138.99"
+  },
+  {id: "12346",
+  date: "12.05.2005",
+  status: "Unsuccess",
+  game_name: "Gregory",
+  game_id: "12345678",
+  balance: "138.99"
+  },
+  {id: "12347",
+  date: "12.05.2005",
+  status: "Success",
+  game_name: "Gregory",
+  game_id: "12345678",
+  balance: "138.99"
+  },
+  {id: "12348",
+  date: "12.05.2005",
+  status: "Pending",
+  game_name: "Gregory",
+  game_id: "12345678",
+  balance: "138.99"
+  },
 ]

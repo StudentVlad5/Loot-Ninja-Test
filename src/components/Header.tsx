@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-
+import { usePathname } from 'next/navigation';
 import { currencies, lunguages } from '@/constants/CONST';
 import { useProject } from '@/context/ProjectContext';
 import ItemsSelector from './ItemsSelector';
@@ -10,6 +10,9 @@ export default function Header() {
   const headerRef = useRef(null);
   const { currency, setCurrency, language, setLanguage } = useProject();
 
+  const pathname = usePathname();
+  let checkHeader = false;
+  
   useEffect(() => {
     gsap.from(headerRef.current, {
       y: -100,
@@ -18,8 +21,14 @@ export default function Header() {
     });
   }, []);
 
+  if(pathname){
+  checkHeader = !pathname.includes('login') && !pathname.includes('registration');}
+
+  if (!checkHeader) {
+    return null; 
+  }
   return (
-    <header
+     <header
       ref={headerRef}
       className="shadow-md p-4 flex justify-center items-center z-[10] absolute top-0 left-1/2 -translate-x-1/2"
     >
@@ -42,5 +51,4 @@ export default function Header() {
         </div>
       </nav>
     </header>
-  );
-}
+  );}

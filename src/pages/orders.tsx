@@ -1,23 +1,22 @@
 import Link from 'next/link';
 import withAuth from '../hook/withAuth';
+import {transactionData} from '../constants/CONST'
+import Image from "next/image";
+import React, { lazy } from "react";
+const Transaction = lazy(() => import("@/components/Transaction"));
 
 const Orders = () => {
-  // Це умовні дані — можеш замінити на API або Redux
-  const mockOrders = [
-    { id: 1, title: 'Замовлення №1' },
-    { id: 2, title: 'Замовлення №2' },
-  ];
-
   return (
-    <div className="p-4">
-      <h1 className="text-2xl mb-4">Список замовлень</h1>
-      <ul className="space-y-2">
-        {mockOrders.map((order) => (
-          <li key={order.id}>
-            <Link href={`/order/${order.id}`} className="text-blue-600 underline">
-              {order.title}
-            </Link>
-          </li>
+    <div className="p-4 mt-[64px] h-[100%] w-[100%]">
+      <Link href='/'>
+        <div className="flex f-row item-center mb-4 gap-[12px]">
+          <Image src='/images/vector.svg' alt="back" width={9.2} height={16.6}/>
+          <span className="text-2xl">Orders</span>
+        </div>
+      </Link>
+      <ul className="space-y-3">
+        {transactionData.map((transaction) => (
+         <Transaction key={transaction.id} {...transaction}/>
         ))}
       </ul>
     </div>
