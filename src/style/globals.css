@@ -45,7 +45,7 @@ main {
 .position_100 {
     z-index: 100;
 }
-..form-checkbox {
+.form-checkbox {
     opacity: 0;
     position: absolute;
     z-index: -1;
