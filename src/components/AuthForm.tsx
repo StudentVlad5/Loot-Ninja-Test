@@ -5,6 +5,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
 import { itemsForLogin } from "@/constants/CONST";
+import { ToastContainer, toast } from 'react-toastify';
 
 type Props = {
   type: "login" | "registration";
@@ -18,9 +19,11 @@ export default function AuthForm({ type }: Props) {
   const isLogin = type === "login";
 
   const dispatch = useDispatch();
+  const notify = () => toast("You have successfully logged in");
 
   const handleLogin = () => {
-    dispatch(login());
+    notify();
+    setTimeout(()=>dispatch(login()),1500);
   };
 
   return (
@@ -119,6 +122,7 @@ export default function AuthForm({ type }: Props) {
           </>
         )}
       </div>
+      <ToastContainer />
     </form>
   );
 }
