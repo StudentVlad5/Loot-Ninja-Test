@@ -1,24 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ItemsSelectorProps } from '@/constants/CONST';
 
-export interface CurrencyOption<T extends string = string> {
-    code: T;
-    label: string;
-    value?: string;
-    img?: string
-  }
+
   
-  interface CurrencySelectorProps<T extends string = string> {
-    options: CurrencyOption<T>[];
-    selected: T;
-    onChange: (code: T) => void;
-  }
-  
-  export default function CurrencySelector<T extends string>({
+  export default function ItemsSelector<T extends string>({
     options,
     selected,
     onChange,
-  }: CurrencySelectorProps<T>) {
+  }: ItemsSelectorProps<T>) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -67,19 +57,19 @@ export interface CurrencyOption<T extends string = string> {
       {/* Меню з опціями */}
       <div
         ref={dropdownRef}
-        className={`overflow-hidden absolute mt-2 w-full rounded z-10 hiden rounded-2xl text-[12px]`}
+        className={`overflow-hidden mt-2 w-full rounded z-[9999] hiden rounded-2xl text-[12px]`}
       >
-        <ul>
+        <ul className='relative  position_100'>
           {options.map((option) => (
-            <li key={option.code}>
+            <li key={option.code} className={`${
+              selected === option.code ? 'bg-gray-700' : 'bg-gray-500 border_white'
+            }`}>
               <button type="button"
                 onClick={() => {
                   onChange(option.code);
                   setOpen(false);
                 }}
-                className={`w-full text-left p-[8px] flex items-center gap-2 hover:bg-gray-900 ${
-                  selected === option.code ? 'bg-gray-700' : ''
-                }`}
+                className={`w-full text-left p-[8px] flex items-center gap-2 hover:bg-gray-900`}
                 
               >
                   <div

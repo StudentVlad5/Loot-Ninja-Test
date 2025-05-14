@@ -1,19 +1,14 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import Link from 'next/link';
-import CurrencySelector from './CurrencySelector';
-import { useProject } from '../context/ProjectContext';
-import { CurrencyOption } from './CurrencySelector';
+
+import { currencies, lunguages } from '@/constants/CONST';
+import { useProject } from '@/context/ProjectContext';
+import ItemsSelector from './ItemsSelector';
+import IconProfile from './IconProfile';
 
 export default function Header() {
   const headerRef = useRef(null);
-  const { currency, setCurrency } = useProject();
-
-  const currencies: CurrencyOption<'usd' | 'eur' | 'uah'>[] = [
-    { code: 'usd', label: 'USD', value: "$" },
-    { code: 'eur', label: 'EUR', value: "€" },
-    { code: 'uah', label: 'UAH', value: "₴" },
-  ];
+  const { currency, setCurrency, language, setLanguage } = useProject();
 
   useEffect(() => {
     gsap.from(headerRef.current, {
@@ -24,17 +19,27 @@ export default function Header() {
   }, []);
 
   return (
-    <header ref={headerRef} className="shadow-md p-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold">Мемасіки</h1>
-      <CurrencySelector
-        options={currencies}
-        selected={currency}
-        onChange={setCurrency}
-      />
-      <nav className="flex gap-4">
-        <Link href="/">Головна</Link>
-        <Link href="/orders">Замовлення</Link>
-        <Link href="/login">Вхід</Link>
+    <header
+      ref={headerRef}
+      className="shadow-md p-4 flex justify-center items-center z-[10] absolute top-0 left-1/2 -translate-x-1/2"
+    >
+      <nav className="flex gap-[33px]">
+        <h1 className="text-xl font-bold w-[80px] h-[36px] rounded-full flex items-center justify-center text-white bg-gray-900">
+          LOGO
+        </h1>
+        <div className="flex gap-[4px] items-center justify-center">
+          <ItemsSelector
+            options={currencies}
+            selected={currency}
+            onChange={setCurrency}
+          />
+          <ItemsSelector
+            options={lunguages}
+            selected={language}
+            onChange={setLanguage}
+          />
+          <IconProfile options={lunguages} selected={language} />
+        </div>
       </nav>
     </header>
   );

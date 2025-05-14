@@ -1,0 +1,64 @@
+
+
+  export const currencies: ItemsOption<'usd' | 'eur' | 'uah'>[] = [
+    { code: 'usd', label: 'USD', value: "$" },
+    { code: 'eur', label: 'EUR', value: "€" },
+    { code: 'uah', label: 'UAH', value: "₴" },
+  ];
+
+  export const lunguages: ItemsOption<'uk' | 'ua' | 'eu'>[] = [
+    { code: 'uk', label: 'UK', img: "/images/user-profile-circle.1.svg" },
+    { code: 'ua', label: 'UA', img: "/images/ukr_flag.svg" },
+    { code: 'eu', label: 'EU', img: "/images/european-union-round-flag.svg" },
+  ];
+
+  export interface ItemsOption<T extends string = string> {
+    code: T;
+    label: string;
+    value?: string;
+    img?: string
+  }
+  
+export  interface ItemsSelectorProps<T extends string = string> {
+    options: ItemsOption<T>[];
+    selected: T;
+    onChange: (code: T) => void;
+  }
+export  interface IconProps<T extends string = string> {
+    options: ItemsOption<T>[];
+    selected: T;
+  }
+
+export const itemsMenu = [
+  {link: '/login',
+    name: "Login",
+    style_name: "narrow"
+  },
+  {link: '/registration',
+    name: "Registration",
+    style_name: "narrow"
+  },
+  {link: '/orders',
+    name: "Orders",
+    style_name: "great"
+  },
+]
+
+export const itemsForLogin = [
+  {url: '/images/google.svg',
+    alt: "Google",
+  },
+  {url: '/images/apple.svg',
+    alt: "Apple",
+  },
+  {url: '/images/facebook.svg',
+    alt: "Facebook",
+  },
+  {url: '/images/discord.svg',
+    alt: "Discord",
+  },
+  {url: '/images/telegram.svg',
+    alt: "Telegram",
+  },
+
+]

@@ -1,20 +1,12 @@
 import withAuth from "../hook/withAuth";
-import { useDispatch } from "react-redux";
-import { login } from "../store/slices/authSlice";
+import AuthForm from "@/components/AuthForm";
 
-function Login() {
-  const dispatch = useDispatch();
-
-  const handleLogin = () => {
-    dispatch(login());
-  };
-
+function Registration() {
   return (
-    <div className="p-4">
-      <h1 className="text-xl mb-2">Login Page</h1>
-      <button onClick={handleLogin} className="bg-blue-500 text-white p-2 rounded">Login</button>
-    </div>
+      <div className="flex items-center justify-center min-h-screen bg-black w-[100%]">
+      <AuthForm type="registration" />
+      </div>
   );
 }
 
-export default withAuth(Login, 'public');
+export default withAuth(Registration, 'public');
